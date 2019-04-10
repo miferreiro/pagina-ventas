@@ -1,0 +1,30 @@
+application: proyecto-gae
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /favicon\.ico
+  static_files: favicon.ico
+  upload: favicon\.ico
+
+- url: /templates
+  static_dir : templates
+  application_readable: true
+
+- url: /logout
+  script: handlers.logout.app
+
+- url: /registry
+  script: handlers.registry.app
+
+- url: .*
+  script: handlers.welcome.app
+
+libraries:
+- name: webapp2
+  version: "2.5.2"
+
+- name: jinja2
+  version: latest

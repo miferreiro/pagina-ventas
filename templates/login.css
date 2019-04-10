@@ -1,0 +1,78 @@
+#login-container{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(#337cbb, white, white, #337cbb);
+}
+#form-singin {
+	max-width: 400px;
+	max-height: 500px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#form-singin .form-control {
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+	margin: 0 auto;
+}
+#form-singin .form-control:focus {
+	z-index: 2;
+}
+
+#form-singin #h1FormLogin {
+	text-align: center;
+	padding-bottom: 20px;
+}
+
+#form-singin #login {
+	width: auto;
+	margin: 10px;
+}
+#form-singin #password {
+	width: auto;
+	margin: 10px;
+}
+#form-singin #buttonFormLogin {
+	width: 100px;
+	margin: 0 auto;
+}
+
+#errorText {
+	color: red;
+	text-align: center;
+}
+
+#correctText{
+	color: green;
+	text-align: center;
+}
+
+#buttonRegistry {
+	width: 100px;
+	margin: 0 auto;
+	border-top: 1px black;
+	margin-top: 20px;
+}
+
+#form-reg{
+	max-width: 400px;
+	max-height: 500px;
+	position: absolute;
+	top: 73%;
+	left: 50%;
+	transform: translate(-50%, -70%);
+}
+
+#form-reg .form-control{
+	box-sizing: border-box;
+	padding: 10px;
+	font-size: 16px;
+	margin: 0 auto;
+}
+
+#form-reg .form-control:focus {
+	z-index: 2;
+}

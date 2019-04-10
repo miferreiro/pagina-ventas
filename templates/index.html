@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="The micro-hangouts network">
+    <title>Subastas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="/templates/login.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container-fluid">
+    <form id="form-singin" method="POST" action="/">
+        <h1 id="h1FormLogin" class="h1 mb-3 font-weight-normal">Página de subastas</h1>
+        {%if correct != "" %}
+            <h4 id="correctText">{{ correct }}</h4>
+        {%endif %}
+        {%if error != ""%}
+            <h4 id="errorText">{{ error }}</h4>
+        {%endif %}
+        {%if not error %}
+            {%if not correct %}
+                <br>
+            {%endif %}
+        {%endif %}
+        <label for="login" class="sr-only">Login</label>
+            <input id="login" name="login" type="text" class="form-control" placeholder="Login"  autofocus size="40" maxlength="20"/>
+        <label for="password" class="sr-only">Contraseña</label>
+            <input id="password" name="password" type="password" class="form-control" placeholder="Contraseña" size="40" maxlength="20"/>
+        <button id="buttonFormLogin" type="submit" class="btn btn-lg btn-primary btn-block mt-3" >Entrar</button>
+        <hr/>
+        <br>
+        <br>
+        <br>
+    </form>
+    <form id="form-reg" method="GET" action="/registry">
+         <p>Si no estás registrado, puedes hacerlo a traves de este boton</p>
+        <button id="buttonRegistry" class="btn btn-lg btn-info btn-block mt-3" style="width:150px">Registrarse</button>
+    </form>
+    <br>
+</div>
+</body>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
