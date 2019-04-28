@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="The micro-hangouts network">
+    <title>Pujas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="navbar navbar-default navbar-static-top" style="text-align:right">
+    <div style="padding-top:10px;padding-right: 10px">
+        <a href="/default_user" style="font-size: 18px;margin-right: 10px">Inicio</a>
+        <a style="font-size: 18px;margin-right: 10px" href="javascript: history.go(-1)">Atrás</a>
+        <a style="font-size: 18px" href="{{login_logout_url}}">Cerrar sesion</a>
+    </div>
+</div>
+    <h1 style="text-align: center">Historial de pujas</h1>
+    <br>
+    <br>
+
+    {% for sale in sales  %}
+    {% if loop.index % 2 == 0 %}
+    <div style="background:#F8F9F9">
+    {% else %}
+    <div>
+    {% endif %}
+        <table class="table">
+            <thead>
+                <tr class="row">
+                    <th class="col-sm-3" style="text-align:center;">Nombre del objeto de la venta</th>
+                    <th class="col-sm-2" style="text-align:center;">Fecha final de la venta</th>
+                    <th class="col-sm-1" style="text-align:center;">Mejor puja</th>
+                    <th class="col-sm-2" style="text-align:center;">Usuario de la venta</th>
+                </tr>
+            </thead>
+                <tr class="row">
+                    <td class="col-sm-3" style="text-align:center;">{{sale.name_object}}</td>
+                    <td class="col-sm-2" style="text-align:center;">{{sale.finish_date_sale}}</td>
+                    <td class="col-sm-1" style="text-align:center;">{{sale.best_bid}}</td>
+                    <td class="col-sm-2" style="text-align:center;">{{sale.login_sale}}</td>
+                </tr>
+        </table>
+
+        <table class="table">
+            <thead>
+                <tr class="row">
+                    <th class="col-sm-2" style="text-align:center;">Precio de la puja</th>
+                </tr>
+            </thead>
+            {% for bid in bids_user if bid.id_sale == sale.id_sale %}
+                <tr class="row">
+                    <td class="col-sm-2" style="text-align:center;">{{bid.prize_bid}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br>
+        <hr>
+        <br>
+    </div>
+    {% else %}
+        <h1 style="text-align:center;color:red">No existen ventas con pujas realizadas</h1>
+    {% endfor %}
+<footer class="panel-footer" style="position: fixed;left: 0;bottom: 0;width: 100%;">
+    <div>
+        Usuario conectado: {{user.nickname()}}
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
