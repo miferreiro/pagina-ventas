@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="The micro-hangouts network">
+    <title>Pujas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="navbar navbar-default navbar-static-top" style="text-align:right">
+    <div style="padding-top:10px;padding-right: 10px">
+        <a href="/default_user" style="font-size: 18px;margin-right: 10px">Inicio</a>
+        <a style="font-size: 18px;margin-right: 10px" href="javascript: history.go(-1)">Atrás</a>
+        <a style="font-size: 18px" href="{{login_logout_url}}">Cerrar sesion</a>
+    </div>
+</div>
+    <h1 style="text-align: center">Ventas activas</h1>
+    {% for sale in sales %}
+        {% if loop.index0 % 3 == 0 or loop.first %}
+            <div class="section">
+                <div class="container">
+                    <div class="row">
+        {% endif %}
+                        <div class="col-md-4">
+                            <p>
+                                <br>Fecha de cierre: {{sale.finish_date_sale}}
+                                <br>Precio inicial de puja: {{sale.initial_sale_prize}}
+                                <br>Puja más alta: {{sale.best_bid}} $
+                                <br>Nombre objeto: {{sale.name_object}}
+                                <br>Vendedor: {{sale.login_sale}}
+                            </p>
+                            <form method="POST" action="/bids">
+                                <input type="hidden" name="user_login" value="{{login}}">
+                                <input type="hidden" name="id_sale" value="{{sale.id_sale}}">
+                                <input type="hidden" name="best_bid" value="{{sale.best_bid}}">
+                                <button type="submit" class="btn btn-lg btn-primary btn-block">Ver pujas</button>
+                            </form>
+                        </div>
+
+        {% if (loop.index % 3 == 0 and not loop.first) or loop.last %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% else %}
+        <br>
+        <br>
+        <h1 style="text-align:center; color:red">No hay ventas activas</h1>
+    {% endfor %}
+<footer class="panel-footer" style="position: fixed;left: 0;bottom: 0;width: 100%;">
+    <div>
+        Usuario conectado: {{user.nickname()}}
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
