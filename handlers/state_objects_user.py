@@ -6,8 +6,10 @@ from model.Object import Object
 from model.Sale import Sale
 from webapp2_extras import users
 
-class StateObjectsUserPage(webapp2.RequestHandler):
+class StatusObjectsUserPage(webapp2.RequestHandler):
+
     def get(self):
+
         user_login = users.users.get_current_user().nickname()
         login_logout_url = users.users.create_logout_url("/")
 
@@ -34,8 +36,8 @@ class StateObjectsUserPage(webapp2.RequestHandler):
         }
 
         jinja = jinja2.get_jinja2(app=self.app)
-        self.response.write(jinja.render_template("state_objects_user.html", **template_values))
+        self.response.write(jinja.render_template("status_objects_user.html", **template_values))
 
 app = webapp2.WSGIApplication([
-    ('/state_objects_user', StateObjectsUserPage)
+    ('/status_objects_user', StatusObjectsUserPage)
 ], debug=True)

@@ -17,8 +17,8 @@ handlers:
   script: handlers.bids_user.app
   login: required
 
-- url: /state_objects_user
-  script: handlers.state_objects_user.app
+- url: /status_objects_user
+  script: handlers.status_objects_user.app
   login: required
 
 - url: /add_bid
