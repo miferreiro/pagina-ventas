@@ -9,36 +9,53 @@
     <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div class="navbar navbar-default navbar-static-top">
-      <div id="home-carousel" class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <form id="logout" method="POST" action="/logout">
-                  <button id="buttonLogOut" class="btn btn-lg btn-link btn-block mt-3" style="width:150px">Cerrar sesion</button>
-              </form>
-            </li>
-          </ul>
-        </div>
-      </div>
+<div class="navbar navbar-default navbar-static-top" style="text-align:right">
+    <div style="padding-top:10px;padding-right: 10px">
+        <a style="font-size: 18px" href="{{login_logout_url}}">Cerrar sesion</a>
     </div>
-    <div class="section ">
-      <div class="container ">
-        <div class="row ">
-          <div class="col-md-12 ">
-            <h1>Pujas</h1>
-          </div>
+</div>
+<h1 style="text-align: center">Menú de inicio</h1>
+<br>
+<br>
+<br>
+<br>
+<div class="section">
+    <div class="container ">
+        <div class="row">
+            <div class="offset-2 col-12 col-sm-6">
+                <form method="GET" action="/objects_user">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin: 5px">Mis objetos</button>
+                </form>
+            </div>
+            <div class="offset-2 col-12 col-sm-6">
+                <form  method="GET" action="/state_objects_user">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin: 5px">Historial de los objetos puestos en venta</button>
+                </form>
+            </div>
         </div>
-      </div>
     </div>
+</div>
+<div class="section">
+    <div class="container ">
+        <div class ="row">
+            <div class="offset-2 col-12 col-sm-6">
+                <form method="GET" action="/sales">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin: 5px">Ventas activas</button>
+                </form>
+            </div>
+            <div class="offset-2 col-12 col-sm-6">
+                <form method="GET" action="/bids_user">
+                    <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin: 5px">Historial de pujas realizadas</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="panel-footer" style="position: fixed;left: 0;bottom: 0;width: 100%;">
+    <div>
+        Usuario conectado: {{login}}
+    </div>
+</footer>
 </body>
 <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>

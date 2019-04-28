@@ -13,11 +13,53 @@ handlers:
   static_dir : templates
   application_readable: true
 
-- url: /logout
-  script: handlers.logout.app
+- url: /bids_user
+  script: handlers.bids_user.app
+  login: required
+
+- url: /state_objects_user
+  script: handlers.state_objects_user.app
+  login: required
+
+- url: /add_bid
+  script: handlers.add_bid.app
+  login: required
+
+- url: /bids
+  script: handlers.bids.app
+  login: required
+
+- url: /form_add_sale
+  script: handlers.form_add_sale.app
+  login: required
+
+- url: /add_sale
+  script: handlers.add_sale.app
+  login: required
+
+- url: /sales
+  script: handlers.sales.app
+  login: required
+
+- url: /delete_object
+  script: handlers.delete_object.app
+  login: required
+
+- url: /add_object
+  script: handlers.add_object.app
+  login: required
+
+- url: /objects_user
+  script: handlers.objects_user.app
+  login: required
+
+- url: /default_user
+  script: handlers.default_user.app
+  login: required
 
 - url: /registry
   script: handlers.registry.app
+  login: required
 
 - url: .*
   script: handlers.welcome.app
