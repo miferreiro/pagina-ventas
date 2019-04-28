@@ -1,5 +1,6 @@
 from google.appengine.ext import ndb
 
 class Bid(ndb.Model):
-    objetos = ndb.StringProperty()
-    pujas = ndb.StringProperty()
+    id_sale = ndb.IntegerProperty()
+    prize_bid = ndb.IntegerProperty()
+    login_bid = ndb.StringProperty()
