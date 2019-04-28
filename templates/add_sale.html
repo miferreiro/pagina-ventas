@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="The micro-hangouts network">
+    <title>Pujas</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="navbar navbar-default navbar-static-top" style="text-align:right">
+    <div style="padding-top:10px;padding-right: 10px">
+        <a href="/default_user" style="font-size: 18px;margin-right: 10px">Inicio</a>
+        <a style="font-size: 18px;margin-right: 10px" href="javascript: history.go(-1)">Atrás</a>
+        <a style="font-size: 18px" href="{{login_logout_url}}">Cerrar sesion</a>
+    </div>
+</div>
+    <h1 style="text-align: center">Crear venta</h1>
+    {%if correct != "" %}
+        <h4 id="correctText" style="color: green;text-align: center;">{{ correct }}</h4>
+    {%endif %}
+    {%if error != "" %}
+        <h4 id="errorText" style="color: red;text-align: center;">{{ error }}</h4>
+    {%endif %}
+    {%if not error %}
+        {%if not correct %}
+            <br>
+        {%endif %}
+    {%endif %}
+    {% if sale|length == 0 %}
+    <form method="POST" action="/add_sale" >
+        <div style="margin-left: 43%">
+            <div class="form-group">
+                <label>Nombre del objeto</label>
+                <input name="name_object" value="{{object_name}}" readonly type="text" placeholder="Nombre del objeto" class="form-control" required style="max-width:200px;margin: 5px"/>
+            </div>
+            <div class="form-group">
+                <label>Precio inicial de la venta</label>
+                 <input name="initial_sale_prize" type="number" placeholder="Precio inicial de la venta" class="form-control" required style="max-width:200px;min-width:200px;margin: 5px"/>
+            </div>
+            <div class="form-group">
+                 <label>Fecha cierre venta</label>
+                 <input name="finish_date_sale" type="date" placeholder="Fecha cierre venta" class="form-control" required style="width:200px;margin: 5px"/>
+            </div>
+            <button type="submit" class="btn btn-md btn-primary btn-block mt-3" style="width:200px;margin: 5px">Crear</button>
+        </div>
+    </form>
+    {% else %}
+     <h4 style="color: red;text-align: center;">Ya existe una venta para este objeto</h4>
+    {% endif %}
+<footer class="panel-footer" style="position: fixed;left: 0;bottom: 0;width: 100%;">
+    <div>
+        Usuario conectado: {{user.nickname()}}
+    </div>
+</footer>
+</body>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
