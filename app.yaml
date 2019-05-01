@@ -1,4 +1,4 @@
-application: proyecto-gae
+application: pagina-ventas
 version: 1
 runtime: python27
 api_version: 1
@@ -12,6 +12,10 @@ handlers:
 - url: /templates
   static_dir : templates
   application_readable: true
+
+- url: /sales_user
+  script: handlers.sales_user.app
+  login: required
 
 - url: /bids_user
   script: handlers.bids_user.app

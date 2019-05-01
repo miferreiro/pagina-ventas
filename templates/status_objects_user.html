@@ -37,7 +37,7 @@
             <td class="col-sm-1" style="text-align:center;">{{object.name}}</td>
             <td class="col-sm-2" style="text-align:center;">{{object.description}}</td>
             <td class="col-sm-1" style="text-align:center;">{%if object.win_on_sale %}Sí{%else%}No{%endif%}</td>
-            {% for object_state in sales_objects_active if object.name == object_state.name_object%}
+            {% for object_status in sales_objects_active if object.name == object_status.name_object%}
             <td class="col-sm-1" style="text-align:center;color: green">
                 Objeto Activo
             {% else %}
@@ -46,13 +46,13 @@
             {% endfor %}
             </td>
             <td class="col-sm-1" style="text-align:center;">
-            {% for object_state in sales_objects if object.name == object_state.name_object%}
-                {{object_state.finish_date_sale}}
+            {% for object_status in sales_objects if object.name == object_status.name_object%}
+                {{object_status.finish_date_sale}}
             {% endfor %}
             </td>
             <td class="col-sm-1" style="text-align:center;">
-            {% for object_state in sales_objects if object.name == object_state.name_object%}
-                {{object_state.best_bid}}
+            {% for object_status in sales_objects if object.name == object_status.name_object%}
+                {{object_status.best_bid}}
             {% endfor %}
             </td>
         </tr>

@@ -18,26 +18,18 @@ class AddBid(webapp2.RequestHandler):
         prize_bid = self.request.get("prize_bid")
         best_bid = self.request.get("best_bid")
 
-        sales = Sale.query(Sale.id_sale == int(id_sale))
-        sale1 = None
-        for sale in sales:
-            sale1 = sale
-
-        sale_login = sale1.login_sale
+        sale = Sale.query(Sale.id_sale == int(id_sale)).get()
+        sale_login = sale.login_sale
 
         if login_bid != "" and prize_bid != "" and id_sale != "" and int(best_bid) < int(prize_bid) and not sale_login == login_bid :
             bid = Bid(id_sale = int(id_sale), prize_bid = int(prize_bid), login_bid = login_bid)
             bid.put()
             time.sleep(1)
 
-            sales = Sale.query(Sale.id_sale == int(id_sale))
-            sale1 = None
-            for sale in sales:
-                sale1 = sale
+            sale = Sale.query(Sale.id_sale == int(id_sale)).get()
+            sale.best_bid = int(prize_bid)
 
-            sale1.best_bid = int(prize_bid)
-
-            Sale.put(sale1)
+            Sale.put(sale)
 
             time.sleep(1)
             bids = Bid.query(Bid.id_sale == int(id_sale)).order(-Bid.prize_bid)

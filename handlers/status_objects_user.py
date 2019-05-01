@@ -18,7 +18,7 @@ class StatusObjectsUserPage(webapp2.RequestHandler):
         sales_objects_active_list = []
 
         for sale in sales_objects:
-            if sale.finish_date_sale < datetime.date.today():
+            if sale.finish_date_sale >= datetime.date.today():
                 sales_objects_active_list.append(sale)
 
         objects_in_sale =[]

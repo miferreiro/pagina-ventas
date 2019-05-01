@@ -22,7 +22,7 @@ class SalesPage(webapp2.RequestHandler):
             if (sal.finish_date_sale - datetime.date.today()).days < 0 and not sales_old:
                 sales_old.append(sal)
 
-        for sale in sales:
+        for sale in sales_old:
 
             sale.sale_delivered = True
             sale.put()
@@ -44,7 +44,6 @@ class SalesPage(webapp2.RequestHandler):
         for sal in sales:
             if (sal.finish_date_sale - datetime.date.today()).days >= 0 :
                 sales_recent.append(sal)
-
 
         template_values = {
             "user": user,

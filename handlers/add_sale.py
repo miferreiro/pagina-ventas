@@ -79,7 +79,7 @@ class AddSale(webapp2.RequestHandler):
             template_values = {
                 "user": user,
                 "object_name": name_object,
-                "sale": sale,
+                "sale": list(sale),
                 "error": error,
                 "login_logout_url":login_logout_url
             }
