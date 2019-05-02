@@ -38,12 +38,12 @@
         </td>
         <td class="col-sm-1" style="text-align:center;">
             {% for object_status in sales_objects if object.name == object_status.name_object%}
-            {{object_status.best_bid}}
+            {{object_status.best_bid}} $
             {% endfor %}
         </td>
     </tr>
     {% else %}
-    <h1 style="text-align:center;color:red">El usuario no tiene objetos puestos a la venta</h1>
+    <h1 style="text-align:center;color:red">No has puesto objetos a la venta</h1>
     {% endfor %}
 </table>
 {% endblock %}
