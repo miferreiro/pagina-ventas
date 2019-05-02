@@ -6,11 +6,11 @@ from webapp2_extras import users
 class DefaultUserManager(webapp2.RequestHandler):
 
     def get(self):
-        user_login = users.users.get_current_user().nickname()
+        user = users.users.get_current_user()
         login_logout_url = users.users.create_logout_url("/")
         jinja = jinja2.get_jinja2(app=self.app)
         template_values = {
-            "login": user_login,
+            "user": user,
             "login_logout_url":login_logout_url
         }
         self.response.write(jinja.render_template("defaultUser.html", **template_values))

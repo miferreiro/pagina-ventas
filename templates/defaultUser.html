@@ -1,62 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="description" content="The micro-hangouts network">
-    <title>Pujas</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://pingendo.github.io/pingendo-bootstrap/themes/default/bootstrap.css" rel="stylesheet" type="text/css">
-</head>
-<body>
-<div class="navbar navbar-default navbar-static-top" style="text-align:right">
-    <div style="padding-top:10px;padding-right: 10px">
-        <a style="font-size: 18px" href="{{login_logout_url}}">Cerrar sesion</a>
+{% extends "skeleton.html" %}
+{% block content %}
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-4" style="text-align: center">Menú de inicio</h1>
     </div>
 </div>
-<h1 style="text-align: center">Menú de inicio</h1>
-<br>
-<br>
-<br>
-<br>
 <div class="section">
     <div class="container ">
         <div class="row">
-            <div class="offset-2 col-12 col-sm-6">
-                <form method="GET" action="/objects_user">
-                    <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin: 5px">Mis objetos</button>
-                </form>
+            <div class="col">
+                <div class="card" style="width:20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Mis objetos</h5>
+                        <p class="card-text">Listado de tus objetos. Podrás ponerlos a la venta.</p>
+                        <footer>
+                            <form method="GET" action="/objects_user">
+                                <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin:5px">
+                                    Ver
+                                </button>
+                            </form>
+                        </footer>
+                    </div>
+                </div>
             </div>
-            <div class="offset-2 col-12 col-sm-6">
-                <form  method="GET" action="/status_objects_user">
-                    <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin: 5px">Historial de los objetos puestos en venta</button>
-                </form>
+            <div class="col">
+                <div class="card" style="width:20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Historial de objetos</h5>
+                        <p class="card-text">Listado de los objetos puestos a la venta</p>
+                        <footer>
+                            <form method="GET" action="/status_objects_user">
+                                <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin:5px">
+                                    Ver
+                                </button>
+                            </form>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card" style="width:20rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Ventas activas</h5>
+                        <p class="card-text">Podrás ver las ventas que están activas y pujar por los objetos que
+                            ofrecen!!</p>
+                        <footer>
+                            <form method="GET" action="/sales">
+                                <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin: 5px">
+                                    Ver
+                                </button>
+                            </form>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <div class="container ">
+                <div class="row">
+                    <div class="col">
+                        <div class="card" style="width:20rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">Historial de ventas</h5>
+                                <p class="card-text">Listado de las ventas en las que has participado y las pujas que
+                                    has realizado en ellas</p>
+                                <footer>
+                                    <form method="GET" action="/sales_user">
+                                        <button type="submit" class="btn btn-lg btn-primary btn-block mt-3"
+                                                style="margin: 5px">Ver
+                                        </button>
+                                    </form>
+                                </footer>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<div class="section">
-    <div class="container ">
-        <div class ="row">
-            <div class="offset-2 col-12 col-sm-6">
-                <form method="GET" action="/sales">
-                    <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin: 5px">Ventas activas</button>
-                </form>
-            </div>
-            <div class="offset-2 col-12 col-sm-6">
-                <form method="GET" action="/sales_user">
-                    <button type="submit" class="btn btn-lg btn-primary btn-block mt-3" style="margin: 5px">Historial de ventas participadas</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<footer class="panel-footer" style="position: fixed;left: 0;bottom: 0;width: 100%;">
-    <div>
-        Usuario conectado: {{login}}
-    </div>
-</footer>
-</body>
-<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</html>
+{% endblock %}

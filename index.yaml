@@ -20,12 +20,12 @@ indexes:
   properties:
   - name: login_bid
   - name: prize_bid
-    direction: desc
 
 - kind: Bid
   properties:
   - name: login_bid
   - name: prize_bid
+    direction: desc
 
 - kind: Sale
   properties:
