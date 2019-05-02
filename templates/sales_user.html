@@ -6,6 +6,7 @@
     </div>
 </div>
 {% for sale in sales  %}
+{% if loop.first %}
 <table class="table table-striped table-hover">
     <thead>
     <tr class="d-flex">
@@ -17,21 +18,23 @@
         <th class="col-sm-2"></th>
     </tr>
     </thead>
+{% endif %}
     <tr class="d-flex">
         <td class="col-sm-3" style="text-align:center;">{{sale.name_object}}</td>
         <td class="col-sm-2" style="text-align:center;">{{sale.finish_date_sale}}</td>
         <td class="col-sm-2" style="text-align:center;">{{sale.login_sale}}</td>
         <td class="col-sm-1" style="text-align:center;">{{sale.best_bid}} $</td>
-        <td class="col-sm-2" style="text-align:center;">{{ best_bids_login[loop.index0]}}</td>
+        <td class="col-sm-2" style="text-align:center;">{%if best_bids_login[loop.index0] != 0 %}{{best_bids_login[loop.index0]}}{% endif %}</td>
         <td class="col-sm-2" style="text-align:center;">
             <form method="POST" action="/bids_user">
-                <input type="hidden" name="object_name" value="{{sale.id_sale}}">
+                <input type="hidden" id="id_sale" name="id_sale" value="{{sale.id_sale}}">
                 <button class="btn btn-mg btn-primary btn-block" style="width:160px">Ver pujas realizadas</button>
             </form>
         </td>
     </tr>
+ {% if loop.last %}
 </table>
-</div>
+{% endif %}
 {% else %}
 <h1 style="text-align:center;color:red">No existen ventas con pujas realizadas</h1>
 {% endfor %}

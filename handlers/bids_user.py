@@ -13,15 +13,19 @@ class BidsUserPage(webapp2.RequestHandler):
 
         id_sale = self.request.get("id_sale")
 
-        bids = Bid.query(Bid.login_bid == user_login).order(-Bid.prize_bid)
+        bids = Bid.query(Bid.id_sale == int(id_sale)).order(-Bid.prize_bid)
         bids_user = list()
+        moments_bids = list()
         for bid in bids:
-            if bid.id_sale == id_sale:
+            if bid.login_bid == user_login:
+                aux = str(bid.moment_bid)
+                moments_bids.append(aux[0:19])
                 bids_user.append(bid)
 
         template_values = {
             "user": users.users.get_current_user(),
-            "bids_user": bids,
+            "bids_user": bids_user,
+            "moments_bids": moments_bids,
             "login_logout_url":login_logout_url
         }
 
