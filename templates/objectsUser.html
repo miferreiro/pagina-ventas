@@ -1,8 +1,9 @@
 {% extends "skeleton.html" %}
 {% block content %}
 <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4" style="text-align: center">Mis objetos</h1>
+    <div class="container" style="text-align: center">
+        <h1 class="display-4" >Mis objetos</h1>
+        <small>Nota: No se pueden crear objetos con nombres repetidos o que otros usuarios tengan</small>
     </div>
 </div>
 <form method="POST" action="/add_object">
