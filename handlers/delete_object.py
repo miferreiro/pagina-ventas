@@ -39,7 +39,7 @@ class DeleteObject(webapp2.RequestHandler):
             template_values = {
                 "user": user,
                 "user_objects": user_objects,
-                "error": "El objeto \"" + name_object + "\" no se ha podido eliminar",
+                "error": "El objeto \"" + name_object + "\" no se ha podido eliminar ya que esta asociado a una venta",
                 "login_logout_url": login_logout_url
             }
             jinja = jinja2.get_jinja2(app=self.app)

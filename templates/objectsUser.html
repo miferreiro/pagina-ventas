@@ -40,29 +40,28 @@
     <thead>
     <tr class="d-flex">
         <th class="col-sm-2" style="text-align:center;">Nombre</th>
-        <th class="col-sm-5" style="text-align:center;">Descripción</th>
+        <th class="col-sm-4" style="text-align:center;">Descripción</th>
         <th class="col-sm-2" style="text-align:center;">Objeto ganado</th>
-        <th class="col-sm-1">&nbsp;</th>
-        <th class="col-sm-1">&nbsp;</th>
-        <th class="col-sm-1">&nbsp;</th>
+        <th class="col-sm-2"></th>
+        <th class="col-sm-2"></th>
     </tr>
     </thead>
     {% endif %}
     <tr class="d-flex">
         <td class="col-sm-2" style="text-align:center;">{{object.name}}</td>
-        <td class="col-sm-5" style="text-align:center;">{{object.description}}</td>
+        <td class="col-sm-4" style="text-align:center;">{{object.description}}</td>
         <td class="col-sm-2" style="text-align:center;">{%if object.win_on_sale %}Sí{%else%}No{%endif%}</td>
         <td class="col" style="text-align:center">
             <form method="POST" action="/form_add_sale">
                 <input type="hidden" name="object_name" value="{{object.name}}">
-                <button class="btn btn-mg btn-secondary btn-block" style="width:150px;margin-right: 5px">Crear venta
+                <button class="btn btn-mg btn-secondary btn-block">Crear venta
                 </button>
             </form>
         </td>
         <td class="col" style="text-align:center">
             <form method="POST" action="/delete_object">
                 <input type="hidden" name="object_name" value="{{object.name}}">
-                <button class="btn btn-mg btn-danger btn-block" style="width:150px">Eliminar</button>
+                <button class="btn btn-mg btn-danger btn-block" >Eliminar</button>
             </form>
         </td>
     </tr>
