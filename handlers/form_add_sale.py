@@ -1,5 +1,6 @@
 #coding: utf-8
 import webapp2
+import datetime
 from webapp2_extras import jinja2
 from webapp2_extras import users
 from model.Sale import Sale
@@ -12,12 +13,17 @@ class FormAddManager(webapp2.RequestHandler):
         login_logout_url = users.users.create_logout_url("/")
         jinja = jinja2.get_jinja2(app=self.app)
 
-        sale = Sale.query(Sale.name_object == object_name)
+        sales = Sale.query(Sale.name_object == object_name)
+        sale = list()
+
+        for sal in sales:
+            if (sal.finish_date_sale - datetime.date.today()).days >= 0:
+                sale.append(sal)
 
         template_values = {
             "user":  users.users.get_current_user(),
             "object_name": object_name,
-            "sale": list(sale),
+            "sale": sale,
             "login_logout_url": login_logout_url
         }
 

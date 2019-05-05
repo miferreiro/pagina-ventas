@@ -19,7 +19,9 @@ class StatusObjectsUserPage(webapp2.RequestHandler):
 
         for sale in sales_objects:
             if sale.finish_date_sale >= datetime.date.today():
-                sales_objects_active_list.append(sale)
+                sales_objects_active_list.append("En venta")
+            else:
+                sales_objects_active_list.append("Finalizada venta")
 
         objects_in_sale =[]
         for object in user_objects:
@@ -29,8 +31,8 @@ class StatusObjectsUserPage(webapp2.RequestHandler):
 
         template_values = {
             "user": users.users.get_current_user(),
-            "user_objects": objects_in_sale,
-            "sales_objects": sales_objects,
+            "objects_in_sale": objects_in_sale,
+            "sales_objects": list(sales_objects),
             "sales_objects_active" : sales_objects_active_list,
             "login_logout_url": login_logout_url
         }

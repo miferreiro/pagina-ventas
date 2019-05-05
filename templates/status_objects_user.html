@@ -6,7 +6,7 @@
     </div>
 </div>
 <table class="table table-striped table-hover">
-    {% for object in user_objects %}
+    {% for object in objects_in_sale %}
     {% if loop.first %}
     <thead>
     <tr class="d-flex">
@@ -23,23 +23,19 @@
         <td class="col-sm-1" style="text-align:center;">{{object.name}}</td>
         <td class="col-sm-4" style="text-align:center;">{{object.description}}</td>
         <td class="col-sm-2" style="text-align:center;">{%if object.win_on_sale %}Sí{%else%}No{%endif%}</td>
-        {% for object_status in sales_objects_active if object.name == object_status.name_object%}
+        {% if sales_objects_active[loop.index0] == "En venta" %}
         <td class="col-sm-2" style="text-align:center;color: green">
             En venta
-            {% else %}
+        {% else %}
         <td class="col-sm-2" style="text-align:center;color: red">
             Finalizada venta
-            {% endfor %}
+        {% endif %}
         </td>
         <td class="col-sm-2" style="text-align:center;">
-            {% for object_status in sales_objects if object.name == object_status.name_object%}
-            {{object_status.finish_date_sale}}
-            {% endfor %}
+            {{sales_objects[loop.index0].finish_date_sale}}
         </td>
         <td class="col-sm-1" style="text-align:center;">
-            {% for object_status in sales_objects if object.name == object_status.name_object%}
-            {{object_status.best_bid}} $
-            {% endfor %}
+            {{sales_objects[loop.index0].best_bid}} $
         </td>
     </tr>
     {% else %}

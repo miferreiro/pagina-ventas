@@ -21,7 +21,11 @@ class AddSale(webapp2.RequestHandler):
         finish_date_sale = datetime.datetime.strptime(finish_date_sale, "%Y-%m-%d")
         finish_date_sale = datetime.date(finish_date_sale.year, finish_date_sale.month, finish_date_sale.day)
 
-        sale = list(Sale.query(Sale.name_object == name_object))
+        sales = list(Sale.query(Sale.name_object == name_object))
+        sale = list()
+        for sal in sales:
+            if (sal.finish_date_sale - datetime.date.today()).days >= 0:
+                sale.append(sal)
 
         if len(sale) != 0:
 
@@ -74,7 +78,11 @@ class AddSale(webapp2.RequestHandler):
 
             jinja = jinja2.get_jinja2(app=self.app)
 
-            sale = Sale.query(Sale.name_object == name_object)
+            sales = Sale.query(Sale.name_object == name_object)
+            sale = list()
+            for sal in sales:
+                if (sal.finish_date_sale - datetime.date.today()).days >= 0:
+                    sale.append(sal)
 
             template_values = {
                 "user": user,
